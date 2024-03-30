@@ -1,0 +1,166 @@
+Typescript: Superset of Javascript. Makes it more paowerful and easier to write code and lesser bugs.
+Browsers can't execute typescript as they do javascript. Nor does the Nodejs can execute the Typescript.
+When the Typscript is compiled (by TS Compiler)we get the javascript itslef, which we did not write.
+The run time errors that happen due to types in JS can be caught during development itself in TS
+Installing Typescript, installs the TS compiler.
+To compile the tsc file: RUN tsc file-name. This will create a crresponding js file
+Now attach this file in the src of <script> tag of HTML file
+
+Advantages over Typescript:
+1. Write Clean code easier
+2. Detect type errors
+3. Highly Configurable
+4. Decorators
+
+To compile the Typescript file: run "tsc fileName.ts"
+
+You can delete node modules, then doing npm install will again download them
+
+Added lite-server,  which will start the server doing npm start. And just need to save the file and compile it. 
+So without reloading the changes will be visible on the server screen.
+How to run code: 
+Run "npm start"
+Then wverytime you make changes in the Ts file, recompile the file. And your changes should reflect on the 
+localhost3000, without reloading the server.
+
+Core Types in TS:
+1. number: This is supported by both Js and Ts. It includes float decimal integers all of them
+2. string: Both support. In "" or '' or backticks `` . Backticks are used when we want to use templates to 
+dynmically inject some data
+3. boolean: true and false
+
+How do we assign type to the function parameters: function(variable_name: type_name){}
+If we assign types to the function parameters and if some other type values are passed to the function then the 
+IDE will show it through red underline. 
+Also when you compile the Ts File, there will be this compile time error stating that the value passed to the 
+parameter was not of the specified type.
+
+In vanilla Js we would have to use typeof method to check if the type of specific variable.
+Js: Dynalically Typed, the variables type can change dynalically.
+Ts: Statically Typed, varaible's type need to specified before hand and they cannot change implicitely
+(at run time) then.
+
+The explicit type assignment that we do for function parameters is only understtod by the Ts and its compiler 
+and not by Js.
+
+**|| Type inference ||**
+Feature of Ts where if a value is initialized to a variable, then it automatically understands 
+that that variable will hold that type of value with which it is initialized. Thats why don't define types 
+when initializing the variables. If we just defined the varialble and did not initialize it then we would
+need to define the type as well.
+When you initialize the variable, typescript infers that that data type value will be stored in that variable, 
+and then if you change the type of the value from what you initially initialized, Ts will throw error.
+
+
+**|| Object Types ||**
+If we don't explicitly define the type of the object while creating it, then Ts automatically creates the 
+object type, where the values are in the form of key:type; pair just like we have key:value, pair in 
+the object definition. Now by the Type inference property, whatever type of data was initialized to each key, 
+becomes its type in the type object of that object.
+
+If we explicitily define the type of object the like: 
+    const obj: object = {
+    }
+Now in this case Ts only will check that the obj is of type object and won't check what values are 
+provided to the keys inside the object. But problem with this practice is, you won't be able to access the inner 
+keys provided to this object. 
+
+So instead of defining the type of object as object we do: 
+const obj: {} = {}
+The {} specifies that this object some specific Ts object.
+Now inside this {} we will give key: type pair ie. which key needs to have what type of value.
+Only those keys should be present in the object that we specify in this curly braces.
+We can also provide the object type of nested object.
+
+
+**|| Array Types ||**
+In Js we know we can have multiple type values in there Arrray.
+Now lets look into the Ts Arrays:
+
+let TsArray: string[] //Specifies that it is array of string
+TsArray = ['a', 'b'] 
+Now that we have specified the type of this array to string array, hence Type Inference property of Ts, will 
+automaticaaly allow all operations that can be done on strings to this array values as well, without any complains.
+
+Now giving anyother type value in the array apart from string will gove error.
+
+If want to have dirrent types of data in the array. Then we specifiy the array type as any[]
+let Tsarray: any[] = []
+
+|| Core Types supported by both Js and Ts: number, string, boolean, object, array ||
+
+**|| Types only supported by Typescript: ||**
+1. Tuple
+    Ex: [1,2] This is fixed Length array as well as fixed type
+    Benefits of using Tuple: We can specify exactly how many elements we want and what the type should be of each element. 
+    In normal array we cannot fix the length nor in object type can we specify that which element needs to have what type.
+    However push method can add more values to the tuple(Exception)
+
+2. Enum
+    Help in assiging human readablity.
+    Ex: enum {NEW OLD} Automatically enumerated global constant identifiers. Enums allow you to define a set of named constants.
+    Enums are useful when you have a fixed set of values that are logically related.
+    In Js: For getting Enum functioanlity we define Constants in capital letters
+    use keyword 'enum' to creat an enum
+    Since enum is a custom Type, so give it the Name with first letter as capital.
+    We can assign any values we want to the Enum values. 
+
+3. any  (*)
+    It tells we can store any value there no specific type is needed.
+    We always avoid this
+
+4. Union Type
+    Used when a variable type is not just one, it can be something else as well. 
+    function combine(input1: number | string) {} //'|' specifies that input1 can be either a number or a string.
+
+5. Literal Types
+    +res : The + symbol will convert the res into integer.
+    Example: +input1 + +input2 This will convert both input1 and unput2 into integer and then return there sum.
+    If in the input we pass something that cannot be converted into an integer, then NaN(Not a number) will be returned. 
+    Instead of specifying type as a data type we can also specify a particular literal /constant string.
+
+6. Type Alias/Custom Types
+    Instead of again and again mentioning union types, we can create a custom type of that Union Type so that it can
+    used at multiple places by being defined at one place.
+    For this we create Alias/Custom type using keyword 'type'. 
+    Format: type CUSTOM_TYPE name = The type you want to encode in your alias or custom type.
+    Improves Reusability.
+
+7. Function return types and voids
+    These are used to explicitly specify the return type of the function. 
+    Do not do it if not necessary
+
+    void type: when function does not need to return anything.
+    :void
+    In Ts, functions are not allowed to return undefined. 
+
+8. Function as types.
+    We can assign types of variables as a Function.
+    Which means that those variable can only hold fumction in them as value.
+    use keyword 'Function'
+    Function type are used to specify the specific type of the function that we want a variable to hold. SO that it may not be able to hold some other not desired function.
+    Function types are the types that describe the function regarding the parametrs and the return type of that function.
+    How do we create the function type:
+
+9. Function Types and Callbacks
+    Callback function: Function that is passed as argument of other function call, and executes after the execution the function called.
+
+10. unknown Type
+    unknown type given to a variable when we don't know yet what type of value will come into it.
+    We can store any type of value in unknow type var, but the type remains to be unknown.
+
+11. never Type
+    
+
+
+
+
+
+
+
+
+
+
+
+
+

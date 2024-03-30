@@ -1,0 +1,11 @@
+1. React Functional component are components that return jsx.
+2. const App: React.FC = () =>{ //React.FC means App is the React's functional component.
+    return JSX
+}
+
+3. We have to specify the type of the props and there internal strucutre that are being passed to the Functionali component.
+const Todo:Recat.FC<INTERFACE THAT DEFINES THE PROP> = prop =>{
+
+}
+
+<Todo items={todo}/> //items needs to be specified in the interface that is is passed inside the prop. 

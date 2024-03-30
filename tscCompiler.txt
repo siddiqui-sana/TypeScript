@@ -1,0 +1,24 @@
+1. Watch mode: To allow specifying a file, so if any change made in that file, the recomilation will happen automatically.
+    Command: tsc FILE_NAME --Watch
+
+2. When we have more than one files: 
+    Only ones run "tsc --init". So this will initialize the project(in which you run this command) as typescript
+     project. Now this folder/project will be managed by Ts.
+     What it does is, it creates a tsconfig.json file. This folder lies in the root of the TS project
+     Now by only running "tsc" and not giving any file name, all TS files in that project will get compiled.
+    
+3. In tsconfig file, we can add file name in "exclude" which we don't want to get comopiled when tsc is run. Ex: node_modules
+    And if we use "include", then whatever files we write in it, will specifically be included in the compilation process.
+    "files" : [] Will help in including only file that we want to compile.
+
+4. sourceMaps: true 
+    This will create map files of the Ts filesa fter compilation, so in the browser dev tools source tab, we can see the ts files as well. 
+    So great help for debugging.
+
+5. Structure of TS project:
+    src:This folder holds All the files that we create
+    dist: THis folder will hold the complied files. When we set it in the outdir in tsconfig.json file.
+    "outDir": "./dist"
+    Also then we will have to change the path in the script tag for these files.
+    "rootDir": "./src" This will specify that our code is in the src folder, so COMPILER WON'T LOOK FOR CODE ANYWHERE
+    ELSE.

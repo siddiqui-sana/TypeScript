@@ -1,0 +1,45 @@
+object: Instance of a class
+Class: Blue Print that hold the info about how an object looks like, the method type of data it will hold
+Functions inside classes are called methods.
+
+constructor() {} Method is bind to a class and the objects created of that class. It gets executed when an object of that class is created.
+New object is created using the new keyword.
+this keyword always refers to the object thorugh which the function was called.
+
+Access Modifiers (ONly available in TS and not in JS)
+If we don't want that a method or variable of a class can accessed directly from outisde the class we can make them private. Using "private" keyword.
+So now those variables can only be accessed or changed through the getters and setters method inside the class. So if we want to access these private variables we need to call the getter ot setter methods of those variables
+By default it is public
+protected class properties can be accessed from inside the clas as well as the class that inherits this class
+
+Shorthand initialization:
+Instead of initializing the variables inside the constructor with values passed, we can automatically do it by provide the entire declaration statement of the var in the parameter section. (along with acccess modifiers)
+"read only" modifier: This prevents from values to be changed after initialization. Add it after adding the access modifiers. Only exists in TS not JS
+
+Inheritance: Used when classes have some common base properties, but also have specialized properties as well. 
+is-a relationship
+A class can inherit from only one class and not multiple classes. 
+Using 'extends' keyword
+After making a constructor in the child class need to write super() to call the constructor of the base class as well so as to initialize those values as well.
+
+Overriding the methods and properties of the base class.
+
+GETTERS AND setters
+getter: To return the value of a private attribute of the object from outside the class
+setter: To change the attribute value which is private
+get NameOfGetter(){
+    return SOMETHING
+}
+
+set NameOfStter(){
+
+}
+
+To call the getter:
+ObjeName.getterName
+
+To call the setter: 
+ObjName.setterNmae = THE VALUE YOU WANT TO PASS TO THE FUNCTION
+
+Static Methods and Properties: 
+Static Methods: Methods of the class ie.e they can be called without instantiating the class.

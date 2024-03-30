@@ -1,0 +1,11 @@
+Interface: Used to define how an object should look like.
+We just specify the varialbes and there types, but not initialize the value of those variables.
+Use keyword 'Interface
+
+Example:
+interface Person {
+    name: string,
+    age: number,
+    greet(salutation: string): void //This is the function with parameter as salutation and returns nothin
+}
+
