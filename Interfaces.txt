@@ -9,3 +9,28 @@ interface Person {
     greet(salutation: string): void //This is the function with parameter as salutation and returns nothin
 }
 
+Interface can be called as a custom type for the object
+Interface cannot have initializer
+Used as a type to type check that the object is being created with all the desired attributes and functions with right type of values
+
+Honestly we could have replaced the interface with a custom type. 
+type is more flexible and inside it we can create other types like union etc.
+But interface is specifically to define the type of objects.
+When we deine an interface then it is super clear that we want to define an object as interface just holds structure of only object.
+Also interface can specify the structure of a class. If a class is made of type interface, then the class needs to have the attributes and functions declared in that interface
+Nutshell:  A class needs to implement the interface
+SYNTAX: class CLASS-NAME implements INTERFACE_NAME1, INTERFACE_NAME2 etc
+
+You can only inherit ffrom one class, but you can implement multiple interfaces.
+The class can have more stuff but bare minimum is the stuff mwntioned in the interface.
+An abstract class can have some only declared stuff and someimplemented stuff.
+But interface does not have any implementation at all.
+
+Why interface? When we need to make sure a class needs to have certain structure
+We cannot use access modifiers in the interfaces. But the readonly property can be set to the attributes declared in the interface
+We can implement inheritance in the interfaces as well.
+Now may be some classes can just implement the parent interface while others might implement both, if they implement the child iNterface
+In interface it is possible to extend more than one interface, ie to have more than just one parent, unlike in classes.\
+Inteface can alsso be used to define the structure of the function.
+IN an interface i we want to mark a property as optional we can add ? after the attribute name.
+Interface do not exist in js. so no transaltion happens of interface into JS while compilation.

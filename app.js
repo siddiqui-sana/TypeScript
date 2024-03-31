@@ -1,109 +1,61 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var Department = /** @class */ (function () {
-    // private name: string //Declaring a private attribute name of type string. This means that this attribute can only be accessed within the class and not from outside the class.
-    // private employees: string[] = []; 
-    // private id: string;
-    function Department(name, employees, id) {
-        if (employees === void 0) { employees = []; }
-        this.name = name;
-        this.employees = employees;
-        this.id = id;
-        //readonly is used to make the attribute read only. This means that the attribute can only be assigned a value once and cannot be changed later.
-        console.log("Department Constructor called");
-        // this.name = n; //Assigning value to name attribute of the specific object created.
+var Administrator = {
+    name: "Sana",
+    privilages: ["create-server"],
+    id: 1,
+    startDate: new Date()
+};
+console.log(Administrator);
+var Pushpa = {
+    name: "Pushpa",
+    id: 2,
+    startDate: new Date()
+};
+//console.log(Pushpa.privilages); //Error because privilages is not a property of Employee type. So we will check first
+if ('privilages' in Pushpa) {
+    console.log(Pushpa.privilages);
+}
+function movingSpeed(animal) {
+    var speed;
+    switch (animal.type) {
+        case 'bird':
+            console.log(animal.flyingSpeed);
+            break;
+        case "horse":
+            console.log(animal.runningSpeed);
+            break;
     }
-    Department.prototype.describe = function () {
-        console.log("Department: ", this.id, this.name); //this.name is used to access the name attribute of the specific object created.(Or the object bu which this function was called)
-    };
-    Department.prototype.addEmployee = function (employee) {
-        this.employees.push(employee);
-        // this.id = "d2"; //This will give an error because the id attribute is readonly and cannot be changed after it is assigned a value.
-    };
-    Department.prototype.printEmployeeInformation = function () {
-        console.log(this.employees.length);
-        console.log(this.employees);
-    };
-    return Department;
-}());
-var ITDepartment = /** @class */ (function (_super) {
-    __extends(ITDepartment, _super);
-    function ITDepartment(name, ad) {
-        var _this = _super.call(this, name, [], "IT") || this;
-        _this.admins = ad;
-        return _this;
+}
+movingSpeed({ type: "bird", flyingSpeed: 10 });
+movingSpeed({ type: "horse", runningSpeed: 20 });
+//So we don't need to create separate properties for email and username. We can use this interface to create error messages for any input type in the form
+var emailError = {
+    email: "Not a valid email"
+    //key can be of anytype that can be converted to string. So we can use number as key as well. bUt value will always be string because we have specified it in the interface.
+};
+var usernameError = {
+    username: "Username must start with a character"
+};
+function add(a, b) {
+    if (typeof a === 'string' || typeof b === 'string') {
+        return a.toString() + " " + b.toString();
     }
-    return ITDepartment;
-}(Department));
-var AccoutingDept = /** @class */ (function (_super) {
-    __extends(AccoutingDept, _super);
-    function AccoutingDept(name, reports) {
-        var _this = _super.call(this, name, [], "ACC") || this;
-        _this.reports = reports;
-        _this.lastReport = reports[reports.length - 1];
-        return _this;
+    return a + b;
+}
+var result = add(5, 5);
+console.log(result);
+var result1 = add("Sana", "Khan");
+result1.split('');
+console.log(result1);
+//Optional chaining
+var api = {
+    data: {
+        discount: 10,
+        name: "Milk",
+        price: 70,
     }
-    AccoutingDept.prototype.setRreports = function (report) {
-        this.reports.push(report);
-        this.lastReport = report;
-    };
-    AccoutingDept.prototype.getReports = function () {
-        console.log("Reports: ", this.reports);
-    };
-    AccoutingDept.prototype.addEmployee = function (employee) {
-        if (employee == "Maroof") {
-            null;
-        }
-        else {
-            this.employees.push(employee);
-        }
-    };
-    AccoutingDept.prototype.getEmployees = function () {
-        console.log(this.employees);
-    };
-    Object.defineProperty(AccoutingDept.prototype, "mostRecentReport", {
-        get: function () {
-            if (this.lastReport)
-                return this.lastReport;
-            throw new Error("No Report Found");
-        },
-        set: function (report) {
-            this.setRreports(report);
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return AccoutingDept;
-}(Department));
-var accounting = new Department("Accounting", [], "d1");
-// accounting.name = "Accouting changed from outside the class" If name was public this would be possible but now the class is private so it will give an error.
-console.log(accounting.describe());
-accounting.addEmployee("Sana");
-accounting.addEmployee("Maroof");
-// accounting.employees[2] = "Ali" //This will not give an error because the employees attribute is public. So, it can be accessed and modified from outside the class. But this should not be 
-accounting.printEmployeeInformation();
-// const accountingCopy = {name: "Accounting Copy", describe: accounting.describe} //Another object created with name Maroof and describe function of accounting object.
-// console.log(accountingCopy.describe()); //The name will be passed Maroof and not Sana. Because the accountingType object has the name Maroof.
-var ITDept = new ITDepartment("Ali", ["Khidmat", "Insiya"]);
-console.log("IT department object:", ITDept);
-var AccDep = new AccoutingDept("The Accounts", ["Report1, Report2"]);
-AccDep.setRreports("Report 3");
-AccDep.getReports();
-AccDep.addEmployee("Maroof");
-AccDep.addEmployee("Sana");
-AccDep.getEmployees();
-AccDep.mostRecentReport = "Report 4"; //This is how we give value to the setter fucntion.
-console.log("The last Report", AccDep.mostRecentReport); //This will not give an error because mostRecentReport is a getter and can be accessed like an attribute. It will return the value of lastReport attribute.
+};
+// console.log(api?.data?.asd); //If data is not present in api object, it will not throw error. It will return undefined.
+//NUllish Coalescing
+var userInput = null;
+var storedData = userInput || "Default"; //If userInput is null, it will return Default. But if userInput is 0, it will also return Default. So to avoid this, we can use nullish coalescing operator
+console.log(storedData);

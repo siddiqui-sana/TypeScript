@@ -1,0 +1,69 @@
+object: Instance of a class
+Class: Blue Print that hold the info about how an object looks like, the method type of data it will hold
+Functions inside classes are called methods.
+
+constructor() {} Method is bind to a class and the objects created of that class. It gets executed when an object of that class is created.
+New object is created using the new keyword.
+this keyword always refers to the object thorugh which the function was called.
+
+Access Modifiers (ONly available in TS and not in JS)
+If we don't want that a method or variable of a class can accessed directly from outisde the class we can make them private. Using "private" keyword.
+So now those variables can only be accessed or changed through the getters and setters method inside the class. So if we want to access these private variables we need to call the getter ot setter methods of those variables
+By default it is public
+protected class properties can be accessed from inside the clas as well as the class that inherits this class
+
+Shorthand initialization:
+Instead of initializing the variables inside the constructor with values passed, we can automatically do it by provide the entire declaration statement of the var in the parameter section. (along with acccess modifiers)
+"read only" modifier: This prevents from values to be changed after initialization. Add it after adding the access modifiers. Only exists in TS not JS
+
+Inheritance: Used when classes have some common base properties, but also have specialized properties as well. 
+is-a relationship
+A class can inherit from only one class and not multiple classes. 
+Using 'extends' keyword
+After making a constructor in the child class need to write super() to call the constructor of the base class as well so as to initialize those values as well.
+
+Overriding the methods and properties of the base class.
+
+GETTERS AND setters
+getter: To return the value of a private attribute of the object from outside the class
+setter: To change the attribute value which is private
+get NameOfGetter(){
+    return SOMETHING
+}
+
+set NameOfStter(){
+
+}
+
+To call the getter:
+ObjeName.getterName
+
+To call the setter: 
+ObjName.setterNmae = THE VALUE YOU WANT TO PASS TO THE FUNCTION
+
+Static Methods and Properties: 
+Static Methods: Methods of the class ie.e they can be called without instantiating the class.
+static keyword
+The static properties are not available on the instance of the class. so CANNOT BE CALLED by the instance.
+
+Abstract class
+When any one or more of the function of a class are made abstract then the "abstract" keyword needs to be added to the class also.
+What is to make a function abstract: In the class we only write the function definition and its return type, but not the implementation.
+Then the each child class will do that abstract functions implementation seperately.
+Functions are made abstract because it might be possible that each child class has some uniue implementation of that function.
+Abstract class cannot be instansitated, only there child classes can be
+
+Private Constructor and Singleton Class
+Singelton Pattern: When a class can have only a single instance.
+To make a class singelton we declare the constuctor of the class private. 
+So now we can access the constructor from within the class itself. 
+And we declare a static instance of the class. So this class if does not exist then we can call the constructor(ie. create that instance using new) else the existing instance will be returned. 
+So in case of a singlenton class:
+ We declare consturctor private
+ To access this constructor a method(static) inside the class needs to be made. 
+ This static method will actually create the instance and return it.
+ Now when we want to create a single instance of the class, we have to call this static method from outside.
+ This method will return the instance if it already exists and if not it will return by creating one. 
+ Since we already declare a static variable of type class that holds the instance.
+ In the createInstance method we will check if this static variable holds an instance or not and then step acc.
+ So no matter how many times you call this class method of creating instance, it will return the same instance that already exists(if it exists) and won't create new one.

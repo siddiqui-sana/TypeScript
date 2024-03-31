@@ -1,0 +1,32 @@
+1. Intersection Type: Combining the two types using &. 
+    Object of Intersection type will have the properties of all the object types that were present in the intersection.
+    Alternates: Inheritance of Interfaces
+    We can also do intersection between Union types
+
+2. Type Guards: These are statements that are used to check the type of an object if there is possibility of an object to be of any one type among many possible type.
+    For example: In case of Union type, we need to use **typeof** of the object that has the type as this union type.
+                 In case when an object can be of any one of the types, then we need to use **in** operator to check if a particular attribute is present or not to decide which object type it is.
+                 **instanceof** operator to check if an object is instance of a particular class or not. //Preffered way.
+                 instanceof cannot be used in the Interfaces, because they are not supported by JS, while instanceof is vanilla JS functions.
+
+3. discriminated union: 
+    Pattern that helps in ease of creating union types in case when we are working with classes.
+    We give a literal to each interface, and then in the function check that type using the switch case.
+
+4. Type Casting:
+    using "as" keyword.
+    Syntax: attribute as "NEW TYPE" //Preferred
+    Other way <TO BE TYPE>CurrentType
+    ! After an expression tells TS, that this expression will never give null
+
+5. Index properties/Types: Help in making more flexible objects regarding the properties they might hold.
+
+6. Function Overloads:
+    Define multiple function signatures and calling them with different types of parameters (same name functions but diff type of parameters or number of paramters)
+
+7. Optional Chaining
+    When not sure if some property really exists or not. so we put ?. after that varialbe. so if it exists it will be fetched otherwise ognored.
+
+8. Nullish Coalescing
+    const userInput = SOME VALUE that might or might not be null || If previous value null then this value gets assigned.
+    So this prevents userInput form getting null
