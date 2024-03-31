@@ -1,0 +1,35 @@
+Generics only supported by TS not by JS (no translations hence)
+For flexible and re-usable code 
+Generics are Types used along with some other types. To give more information about the type of the data stored. 
+Example: GenericType<specificType>
+They provide better type safety
+
+Creating our own generic types:
+<T,U>
+
+Working with constraints
+We can add constraints to the Generic types using extends keyword. So now the genric type can have constriants of what it can hold
+Constraint will make sure that the Generic Type gets the value of the constrained type only, other wise error will be thrown
+generic type can also extend an interface of type (custom made type)
+Another Generic Function
+Most oftern the parameter of the function will be of the generic type of that function
+Custom Generic Type let us to have any type of data as parameter with certain specified properties (Flexibility )
+
+keyof Constraint
+Not done much
+
+Gneric Classes
+class dataStorage<T>{ //Adding <T> makes it generic class
+}
+
+Why to create such Generic class:
+ Because may be we want to have different types and not just one.
+ For object type it won't work, because of hte concep tof hte reference.
+ So you can add constrainst that the Generic type can work with only those
+
+//Not studied much
+Generic Utility Type: 
+1. Partial<Generic Type> // To make the values in the object temporary
+2. Readonly<string[]> //To make it fixed
+
+
